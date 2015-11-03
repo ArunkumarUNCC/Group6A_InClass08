@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
             startMessageActivity();
         }
 
-        ParseObject obj = new ParseObject("Testing");
-        obj.put("name", "Bob Smith");
-        obj.saveInBackground();
+//        ParseObject obj = new ParseObject("Testing");
+//        obj.put("name", "Bob Smith");
+//        obj.saveInBackground();
 //        fParse = new ParseObject("Login");
 //        fParse.put("Name","Arun kumar");
 //        fParse.put("Email","asdsand@gmail.com");

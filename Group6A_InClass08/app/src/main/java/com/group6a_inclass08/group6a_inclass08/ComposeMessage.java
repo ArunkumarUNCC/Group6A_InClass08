@@ -1,5 +1,6 @@
 package com.group6a_inclass08.group6a_inclass08;
 
+import android.provider.CalendarContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
+import java.sql.Time;
+
 public class ComposeMessage extends AppCompatActivity {
 
+    static final String fCREATED_BY = "createdBy";
+    static final String fMESSAGE = "message";
+    static final String fTIME = "time";
+
+    ParseUser fCurrentUser = new ParseUser();
+//    ParseObject fParseObj = new ParseObject();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +33,7 @@ public class ComposeMessage extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.app_icon);
+        fCurrentUser = ParseUser.getCurrentUser();
     }
 
     @Override
@@ -45,9 +59,12 @@ public class ComposeMessage extends AppCompatActivity {
     }
 
     public void sendMessageOnClick (View aView){
-        TextView lTextField = (TextView) findViewById(R.id.editTextMessage);
+        TextView lMessageField = (TextView) findViewById(R.id.editTextMessage);
 
-        if(lTextField.length() == 0)
+        if(lMessageField.length() > 0){
+            fCurrentUser.put(fCREATED_BY, ParseUser.getCurrentUser());
+            fCurrentUser.put(fMESSAGE, lMessageField.getText().toString());
+        }else
             Toast.makeText(this, "No text entered, message not sent!", Toast.LENGTH_SHORT).show();
     }
 
