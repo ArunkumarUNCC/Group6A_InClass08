@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         if (checkUser!=null){
             //Do Messaging
         }
+
+        ParseObject obj = new ParseObject("Testing");
+        obj.put("name", "Bob Smith");
+        obj.saveInBackground();
 //        fParse = new ParseObject("Login");
 //        fParse.put("Name","Arun kumar");
 //        fParse.put("Email","asdsand@gmail.com");
@@ -83,7 +88,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginOnClick (View aView){
+        String lEmail,lPass;
+        lEmail = fEmail.getText().toString();
+        lPass = fPassword.getText().toString();
 
+        ParseUser.logInInBackground(lEmail, lPass, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+
+            }
+        });
     }
     public void createAccountOnClick (View aView){
         Intent lSignupIntent = new Intent(fGOTOSIGNUP);
