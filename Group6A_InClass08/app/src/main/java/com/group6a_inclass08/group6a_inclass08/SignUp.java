@@ -5,13 +5,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class SignUp extends AppCompatActivity {
+
+    EditText fEmail;
+    EditText fName;
+    EditText fPass;
+    EditText fRePass;
+    Button fSubmitSignup,fCancelSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        fEmail = (EditText) findViewById(R.id.editTextEmail);
+        fName = (EditText) findViewById(R.id.editTextFirstName);
+        fPass = (EditText) findViewById(R.id.editTextPassword);
+        fRePass = (EditText) findViewById(R.id.editTextConfirmPassword);
+
+        fSubmitSignup = (Button) findViewById(R.id.buttonSignUp);
+        fCancelSignup = (Button) findViewById(R.id.buttonCancel);
     }
 
     @Override

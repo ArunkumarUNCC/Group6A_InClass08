@@ -1,42 +1,58 @@
 package com.group6a_inclass08.group6a_inclass08;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class MainActivity extends AppCompatActivity {
 
     ParseObject fParse;
 
+    EditText fEmail;
+    EditText fPassword;
+
+    Button fLogin,fSignup;
+
+    final String fGOTOSIGNUP = "android.intent.action.SIGNUP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Initialize Parse
-        Parse.initialize(this, "3HaYVvf3qFMsKrCrh3AjmdfSm1J2LFtQ5ogCg94v", "CuvIH6vAsYF2Sp7zmRAKty12R1MQ2RbKFGBfeSuW");
+        fEmail = (EditText) findViewById(R.id.editTextEmail);
+        fPassword = (EditText) findViewById(R.id.editTextPassword);
+        fLogin = (Button) findViewById(R.id.buttonLogIn);
+        fSignup = (Button) findViewById(R.id.buttonSignUp);
 
-        fParse = new ParseObject("Login");
-        fParse.put("Name","Arun kumar");
-        fParse.put("Email","asdsand@gmail.com");
-        fParse.put("Password","djasjdk");
-        fParse.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if(e==null)
-                    Log.d("Msg","Signup Success");
-                else Log.d("Msg","Signup Failed");
-            }
-        });
+        ParseUser checkUser = ParseUser.getCurrentUser();
+        if (checkUser!=null){
+            //Do Messaging
+        }
+//        fParse = new ParseObject("Login");
+//        fParse.put("Name","Arun kumar");
+//        fParse.put("Email","asdsand@gmail.com");
+//        fParse.put("Password","djasjdk");
+//        fParse.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if(e==null)
+//                    Log.d("Msg","Signup Success");
+//                else Log.d("Msg","Signup Failed");
+//            }
+//        });
     }
 
     @Override
@@ -65,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void createAccountOnClick (View aView){
-
+        Intent lSignupIntent = new Intent(fGOTOSIGNUP);
+        startActivity(lSignupIntent);
     }
 }
