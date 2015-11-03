@@ -6,9 +6,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 public class MessageActivity extends AppCompatActivity {
 
     ListView fMessageList;
+    static MessageAdapter adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,12 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
 
         fMessageList = (ListView) findViewById(R.id.listViewMessages);
+
+        ParseQuery<ParseObject> messages = ParseQuery.getQuery("Messages");
+
+        adapter = new MessageAdapter(this,R.layout.message_row,asd);
+
+
     }
 
     @Override

@@ -10,20 +10,7 @@
         android:paddingLeft="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/firstNameText"
-        android:id="@+id/textViewFirstName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/lastNameText"
-        android:paddingTop="5dp"
-        android:paddingLeft="10dp"
-        android:id="@+id/textViewLastName"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textViewFirstName"
-        android:layout_toEndOf="@+id/textViewFirstName" />
+        android:id="@+id/textViewmFirstName" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +19,7 @@
         android:text="@string/messageBody"
         android:paddingLeft="5dp"
         android:id="@+id/textViewMessageBody"
-        android:layout_below="@+id/textViewFirstName"
+        android:layout_below="@+id/textViewmFirstName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button fLogin,fSignup;
 
     final String fGOTOSIGNUP = "android.intent.action.SIGNUP";
+    final String fGOTOMESSAGE = "android.intent.action.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         ParseUser checkUser = ParseUser.getCurrentUser();
         if (checkUser!=null){
-            //Do Messaging
+            startMessageActivity();
         }
 
         ParseObject obj = new ParseObject("Testing");
@@ -99,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 if(e!=null)
                     Toast.makeText(MainActivity.this,"Invalid Details",Toast.LENGTH_SHORT).show();
                 else{
-                //Do Something;
+                    startMessageActivity();
+
                 }
             }
         });
@@ -107,5 +109,9 @@ public class MainActivity extends AppCompatActivity {
     public void createAccountOnClick (View aView){
         Intent lSignupIntent = new Intent(fGOTOSIGNUP);
         startActivity(lSignupIntent);
+    }
+    public void startMessageActivity(){
+        Intent intent = new Intent(fGOTOMESSAGE);
+        startActivity(intent);
     }
 }
