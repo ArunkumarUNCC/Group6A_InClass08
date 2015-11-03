@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ComposeMessage extends AppCompatActivity {
@@ -38,8 +39,19 @@ public class ComposeMessage extends AppCompatActivity {
     }
 
     public void sendMessageOnClick (View aView){
+        TextView lTextField = (TextView) findViewById(R.id.editTextMessage);
 
-        //if text field is empty
-        Toast.makeText(this, "No text entered", Toast.LENGTH_SHORT).show();
+        if(lTextField.length() == 0)
+            Toast.makeText(this, "No text entered, message not sent!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void refreshOnClick (MenuItem aMenu){
+
+    }
+    public void composeOnClick (MenuItem aMenu){
+
+    }
+    public void logoutOnClick (MenuItem aMenu){
+
     }
 }

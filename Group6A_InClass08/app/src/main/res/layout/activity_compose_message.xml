@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/editTextMessage"
         android:layout_below="@+id/textViewMessageTitle"
         android:maxLength="120"
         android:layout_alignParentLeft="true"
