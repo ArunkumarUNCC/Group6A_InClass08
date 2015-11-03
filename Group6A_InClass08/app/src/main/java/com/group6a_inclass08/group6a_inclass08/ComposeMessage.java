@@ -11,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.sql.Time;
 
@@ -23,7 +25,7 @@ public class ComposeMessage extends AppCompatActivity {
     static final String fTIME = "time";
 
     ParseUser fCurrentUser = new ParseUser();
-//    ParseObject fParseObj = new ParseObject();
+    ParseObject fParseObj = new ParseObject("Messages");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +64,19 @@ public class ComposeMessage extends AppCompatActivity {
         TextView lMessageField = (TextView) findViewById(R.id.editTextMessage);
 
         if(lMessageField.length() > 0){
-            fCurrentUser.put(fCREATED_BY, ParseUser.getCurrentUser());
-            fCurrentUser.put(fMESSAGE, lMessageField.getText().toString());
+            fParseObj.put(fCREATED_BY, ParseUser.getCurrentUser());
+            fParseObj.put(fMESSAGE, lMessageField.getText().toString());
+
+            fParseObj.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Toast.makeText(ComposeMessage.this,"Message Saved",Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else Toast.makeText(ComposeMessage.this, "Message not sent!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }else
             Toast.makeText(this, "No text entered, message not sent!", Toast.LENGTH_SHORT).show();
     }

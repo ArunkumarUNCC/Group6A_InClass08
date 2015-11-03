@@ -1,5 +1,6 @@
 package com.group6a_inclass08.group6a_inclass08;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,7 +26,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ParseQuery<ParseObject> messages = ParseQuery.getQuery("Messages");
 
-        adapter = new MessageAdapter(this,R.layout.message_row,asd);
+//        adapter = new MessageAdapter(this,R.layout.message_row,);
 
 
     }
@@ -50,5 +51,16 @@ public class MessageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void refreshOnClick (MenuItem aMenu){
+
+    }
+    public void composeOnClick (MenuItem aMenu){
+        Intent intent = new Intent("android.intent.action.COMPOSE");
+        startActivity(intent);
+    }
+    public void logoutOnClick (MenuItem aMenu){
+
     }
 }

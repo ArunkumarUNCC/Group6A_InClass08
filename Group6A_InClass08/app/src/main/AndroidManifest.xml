@@ -32,6 +32,11 @@
         <activity
             android:name=".ComposeMessage"
             android:label="@string/title_activity_compose_message" >
+            <intent-filter>
+                <action android:name="android.intent.action.COMPOSE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MessageActivity"
