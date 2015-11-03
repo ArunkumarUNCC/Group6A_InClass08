@@ -15,6 +15,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/editTextFirstName" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/editTextEmail" />
@@ -26,19 +31,26 @@
             android:ems="10"
             android:id="@+id/editTextPassword" />
 
-        <Button
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/loginText"
-            android:id="@+id/buttonLogIn"
-            android:onClick="@string/loginOnClick" />
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextConfirmPassword" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/createAccount"
-            android:id="@+id/buttonCreateAccount"
-            android:onClick="@string/createAccountOnClick" />
+            android:text="@string/signUpButtonText"
+            android:id="@+id/buttonSignUp"
+            android:onClick="@string/signUpOnClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelButtonText"
+            android:id="@+id/buttonCancel"
+            android:onClick="@string/cancelOnClick" />
 
     </LinearLayout>
 
