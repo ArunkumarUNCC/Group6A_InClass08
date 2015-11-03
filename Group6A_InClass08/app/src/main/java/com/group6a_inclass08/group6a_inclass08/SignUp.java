@@ -76,6 +76,7 @@ public class SignUp extends AppCompatActivity {
         if(lName.isEmpty()){
             fName.setError("Enter Name");
         }
+
         if(lEmail.isEmpty()){
             fEmail.setError("Enter Email");
         }
@@ -98,6 +99,7 @@ public class SignUp extends AppCompatActivity {
         lSignupUser.setEmail(lEmail);
         lSignupUser.setPassword(lPassword);
         lSignupUser.setUsername(lEmail);
+        lSignupUser.put("Name",lName);
         lSignupUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {

@@ -44,23 +44,9 @@ public class MainActivity extends AppCompatActivity {
         ParseUser checkUser = ParseUser.getCurrentUser();
         if (checkUser!=null){
             startMessageActivity();
+            finish();
         }
 
-//        ParseObject obj = new ParseObject("Testing");
-//        obj.put("name", "Bob Smith");
-//        obj.saveInBackground();
-//        fParse = new ParseObject("Login");
-//        fParse.put("Name","Arun kumar");
-//        fParse.put("Email","asdsand@gmail.com");
-//        fParse.put("Password","djasjdk");
-//        fParse.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if(e==null)
-//                    Log.d("Msg","Signup Success");
-//                else Log.d("Msg","Signup Failed");
-//            }
-//        });
         //displaying app icon
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
@@ -94,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         lEmail = fEmail.getText().toString();
         lPass = fPassword.getText().toString();
 
+        if(lEmail.isEmpty())
+            fEmail.setError("Email cannot be empty");
+        if(lPass.isEmpty()) {
+            fPassword.setError("Password cannot be empty");
+            return;
+        }
         ParseUser.logInInBackground(lEmail, lPass, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
@@ -113,5 +105,6 @@ public class MainActivity extends AppCompatActivity {
     public void startMessageActivity(){
         Intent intent = new Intent(fGOTOMESSAGE);
         startActivity(intent);
+        finish();
     }
 }

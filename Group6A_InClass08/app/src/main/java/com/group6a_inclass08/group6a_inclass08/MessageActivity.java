@@ -7,14 +7,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.parse.FindCallback;
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
 
+    final String fGOTOMAIN = "android.intent.action.MAIN";
     ListView fMessageList;
     static MessageAdapter adapter;
 
+    static List<ParseObject> userMessages = new ArrayList<ParseObject>();
 
 
     @Override
@@ -24,11 +33,7 @@ public class MessageActivity extends AppCompatActivity {
 
         fMessageList = (ListView) findViewById(R.id.listViewMessages);
 
-        ParseQuery<ParseObject> messages = ParseQuery.getQuery("Messages");
-
-//        adapter = new MessageAdapter(this,R.layout.message_row,);
-
-
+        queryMessagess();
     }
 
     @Override
@@ -54,13 +59,39 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     public void refreshOnClick (MenuItem aMenu){
-
+        userMessages.clear();
+        adapter.notifyDataSetChanged();
+        queryMessagess();
     }
     public void composeOnClick (MenuItem aMenu){
         Intent intent = new Intent("android.intent.action.COMPOSE");
         startActivity(intent);
     }
     public void logoutOnClick (MenuItem aMenu){
-
+        ParseUser.logOutInBackground(new LogOutCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Intent intent = new Intent(fGOTOMAIN);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
+
+    public void queryMessagess(){
+        final ParseQuery<ParseObject> messages = ParseQuery.getQuery("Messages");
+        messages.include("createdBy");
+        messages.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                userMessages = objects;
+                adapter = new MessageAdapter(MessageActivity.this, R.layout.message_row, objects);
+                fMessageList.setAdapter(adapter);
+                adapter.setNotifyOnChange(true);
+            }
+        });
+    }
+
 }

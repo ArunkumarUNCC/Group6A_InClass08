@@ -1,5 +1,6 @@
 package com.group6a_inclass08.group6a_inclass08;
 
+import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogOutCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -20,6 +22,7 @@ import java.sql.Time;
 
 public class ComposeMessage extends AppCompatActivity {
 
+    final String fGOTOMAIN = "android.intent.action.MAIN";
     static final String fCREATED_BY = "createdBy";
     static final String fMESSAGE = "message";
     static final String fTIME = "time";
@@ -71,6 +74,9 @@ public class ComposeMessage extends AppCompatActivity {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
+
+                        MessageActivity.userMessages.add(fParseObj);
+                        MessageActivity.adapter.notifyDataSetChanged();
                         Toast.makeText(ComposeMessage.this,"Message Saved",Toast.LENGTH_SHORT).show();
                         finish();
                     }
@@ -81,13 +87,19 @@ public class ComposeMessage extends AppCompatActivity {
             Toast.makeText(this, "No text entered, message not sent!", Toast.LENGTH_SHORT).show();
     }
 
-    public void refreshOnClick (MenuItem aMenu){
 
-    }
-    public void composeOnClick (MenuItem aMenu){
-
-    }
     public void logoutOnClick (MenuItem aMenu){
+        ParseUser.logOutInBackground(new LogOutCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e==null) {
+                    Intent intent = new Intent(fGOTOMAIN);
+                    startActivity(intent);
+                    finish();
 
+                }
+            }
+        });
     }
+
 }
