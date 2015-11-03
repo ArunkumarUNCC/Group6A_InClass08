@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Message Me (Login)</string>
+    <string name="app_name">Message Me</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -20,4 +20,11 @@
     <string name="messageTitle">Message:</string>
     <string name="sendButtonText">Send</string>
     <string name="sendMessageOnClick">sendMessageOnClick</string>
+    <string name="refresh">Refresh</string>
+    <string name="compose">Compose</string>
+    <string name="logout">Logout</string>
+    <string name="firstNameText">First Name</string>
+    <string name="lastNameText">Last Name</string>
+    <string name="messageBody">Gloriatur temporibus id vis, accumsan tacimates ex nam.</string>
+    <string name="dateText">MM/DD/YYYY HH:MM</string>
 </resources>
