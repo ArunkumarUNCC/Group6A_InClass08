@@ -7,4 +7,9 @@
     <string name="cancelButtonText">Cancel</string>
     <string name="cancelOnClick">cancelOnClick</string>
     <string name="signUpOnClick">signUpOnClick</string>
+    <string name="title_activity_sign_up">Message Me (SignUp)</string>
+    <string name="loginOnClick">loginOnClick</string>
+    <string name="createAccount">Create New Account</string>
+    <string name="createAccountOnClick">createAccountOnClick</string>
+    <string name="loginText">Login</string>
 </resources>
