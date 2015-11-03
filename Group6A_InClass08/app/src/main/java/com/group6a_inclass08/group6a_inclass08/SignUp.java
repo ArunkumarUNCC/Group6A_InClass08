@@ -7,6 +7,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 
 public class SignUp extends AppCompatActivity {
 
@@ -53,10 +61,56 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signUpOnClick (View aView){
+        final String lName,lEmail,lPassword,lRePass;
+        lName = fName.getText().toString();
+        lEmail = fEmail.getText().toString();
+        lPassword = fPass.getText().toString();
+        lRePass = fRePass.getText().toString();
+
+        if(lName.isEmpty()){
+            fName.setError("Enter Name");
+        }
+        if(lEmail.isEmpty()){
+            fEmail.setError("Enter Email");
+        }
+        if (lPassword.isEmpty()){
+            fPass.setError("Empty Password");
+        }
+        if (lRePass.isEmpty()){
+            fRePass.setError("Re Enter Password");
+        }
+        if(!lPassword.equals(lRePass)){
+            fPass.setText("");
+            fRePass.setText("");
+            Toast.makeText(this,"Passwords Mismatch",Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
+
+        ParseUser lSignupUser = new ParseUser();
+        lSignupUser.setEmail(lEmail);
+        lSignupUser.setPassword(lPassword);
+        lSignupUser.setUsername(lEmail);
+        lSignupUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+
+                    if (e == null) {
+                        Toast.makeText(SignUp.this,"Signup Successful",Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        e.printStackTrace();
+                        Toast.makeText(SignUp.this,"Email Already exists",Toast.LENGTH_SHORT).show();
+                    }
+
+            }
+        });
+
 
     }
 
     public void cancelOnClick(View aView){
-
+        finish();
     }
 }

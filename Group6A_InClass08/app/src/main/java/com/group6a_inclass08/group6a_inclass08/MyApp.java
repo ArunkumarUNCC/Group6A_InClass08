@@ -15,6 +15,6 @@ public class MyApp extends Application {
         super.onCreate();
 
         //Initialize Parse
-        Parse.initialize(this, "3HaYVvf3qFMsKrCrh3AjmdfSm1J2LFtQ5ogCg94v", "CuvIH6vAsYF2Sp7zmRAKty12R1MQ2RbKFGBfeSuW");
+        Parse.initialize(this, "s6EXTtYPaqLdLzzRFH6l1Af7zs3yktlWpLsTRVPF", "eQ3uhic2wBYdZRGm5bcz5W3hwufIshc8XxJ0Y5fP");
     }
 }
