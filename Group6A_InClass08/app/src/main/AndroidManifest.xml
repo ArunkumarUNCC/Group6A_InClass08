@@ -31,6 +31,10 @@
             </intent-filter>
 
         </activity>
+        <activity
+            android:name=".ComposeMessage"
+            android:label="@string/title_activity_compose_message" >
+        </activity>
     </application>
 
 </manifest>
