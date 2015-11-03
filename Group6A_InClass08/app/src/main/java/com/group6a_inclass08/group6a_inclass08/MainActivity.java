@@ -1,6 +1,7 @@
 package com.group6a_inclass08.group6a_inclass08;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
 //                else Log.d("Msg","Signup Failed");
 //            }
 //        });
+        //displaying app icon
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.app_icon);
     }
 
     @Override

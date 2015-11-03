@@ -1,5 +1,6 @@
 package com.group6a_inclass08.group6a_inclass08;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,6 +29,11 @@ public class SignUp extends AppCompatActivity {
 
         fSubmitSignup = (Button) findViewById(R.id.buttonSignUp);
         fCancelSignup = (Button) findViewById(R.id.buttonCancel);
+
+        //displaying app icon
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.app_icon);
     }
 
     @Override
