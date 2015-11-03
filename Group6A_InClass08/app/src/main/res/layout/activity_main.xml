@@ -16,27 +16,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:layout_marginTop="35dp"
             android:ems="10"
-            android:id="@+id/editTextEmail" />
+            android:id="@+id/editTextEmail"
+            android:hint="@string/emailHint" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:layout_marginTop="35dp"
             android:ems="10"
-            android:id="@+id/editTextPassword" />
+            android:id="@+id/editTextPassword"
+            android:hint="@string/passwordHint" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/loginText"
             android:id="@+id/buttonLogIn"
+            android:layout_marginTop="50dp"
             android:onClick="@string/loginOnClick" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/createAccount"
+            android:layout_marginTop="25dp"
             android:id="@+id/buttonCreateAccount"
             android:onClick="@string/createAccountOnClick" />
 

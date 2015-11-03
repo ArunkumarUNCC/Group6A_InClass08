@@ -15,33 +15,42 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextFirstName" />
+            android:layout_marginTop="25dp"
+            android:id="@+id/editTextFirstName"
+            android:hint="@string/userNameSignUp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:layout_marginTop="25dp"
             android:ems="10"
-            android:id="@+id/editTextEmail" />
+            android:id="@+id/editTextEmail"
+            android:hint="@string/emailHint" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:layout_marginTop="25dp"
             android:ems="10"
-            android:id="@+id/editTextPassword" />
+            android:id="@+id/editTextPassword"
+            android:hint="@string/passwordHint" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:layout_marginTop="25dp"
             android:ems="10"
-            android:id="@+id/editTextConfirmPassword" />
+            android:id="@+id/editTextConfirmPassword"
+            android:hint="@string/confirmPasswordHint" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/signUpButtonText"
+            android:layout_marginTop="80dp"
             android:id="@+id/buttonSignUp"
             android:onClick="@string/signUpOnClick" />
 
