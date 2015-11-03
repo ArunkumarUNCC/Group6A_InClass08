@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -90,7 +91,11 @@ public class MainActivity extends AppCompatActivity {
         ParseUser.logInInBackground(lEmail, lPass, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-
+                if(e!=null)
+                    Toast.makeText(MainActivity.this,"Invalid Details",Toast.LENGTH_SHORT).show();
+                else{
+                //Do Something;
+                }
             }
         });
     }

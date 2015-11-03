@@ -27,4 +27,5 @@
     <string name="lastNameText">Last Name</string>
     <string name="messageBody">Gloriatur temporibus id vis, accumsan tacimates ex nam.</string>
     <string name="dateText">MM/DD/YYYY HH:MM</string>
+    <string name="title_activity_message">MessageMe</string>
 </resources>
